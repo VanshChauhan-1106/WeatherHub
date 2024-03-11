@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WeatherHub | Weather Around You!</title>
+  <link rel="shortcut icon" type="image/x-icon" href="logo5.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="fa-solid fa-cloud me-2"></i>WeatherHub</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link" href="#">Usage Guide</a> -->
+            </li>
+            <li class="nav-item dropdown">
+              <!-- <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Popular Locations
+                </a> -->
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Delhi</a></li>
+                <li><a class="dropdown-item" href="#">Mumbai</a></li>
+                <li><a class="dropdown-item" href="#">Bangalore</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link" href="#" aria-disabled="true">About WeatherHub</a> -->
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="city" />
+            <button class="btn btn-outline-light" type="submit" id="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal text-body-emphasis" id="h-hover">
+          Weather of <span id="cityName"></span>
+        </h1>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">
+                <i class="fa-solid fa-temperature-high me-2" id="title-icon"></i>Temperature Info
+              </h4>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled mt-3 mb-4">
+                <li class="fw-bold fs-5">
+                  Temperature : <span id="temp">00</span><span> &#8451;</span>
+                </li>
+                <li class="fw-bold fs-5">
+                  Feels Like : <span id="feels_like">00</span><span> &#8451;</span>
+                </li>
+                <li class="fw-bold fs-5">
+                  Min Temp : <span id="min_temp">00</span><span> &#8451;</span>
+                </li>
+                <li class="fw-bold fs-5">
+                  Max Temp : <span id="max_temp">00</span><span> &#8451;</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">
+                <i class="fa-solid fa-smog me-2"></i>Cloud Info
+              </h4>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled mt-3 mb-4">
+                <li class="fw-bold fs-5">
+                  Precipitation : <span id="cloud_pct">00</span><span> &#37;</span>
+                </li>
+                <li class="fw-bold fs-5">
+                  Humidity : <span id="humidity">00</span><span> &#37;</span>
+                </li>
+                <li class="fw-bold fs-5">
+                  Wind Speed : <span id="wind_speed">00</span><span> km/h</span>
+                </li>
+                <li class="fw-bold fs-5">
+                  Wind Deg : <span id="wind_degrees">00</span><span> &#8451;</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">
+                <i class="fa-solid fa-sun me-2"></i>Sun Info
+              </h4>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled mt-3 mb-4">
+                <li class="fw-bold fs-5">
+                  Sunrise : <span id="sunrise">00</span><span> AM</span>
+                </li>
+                <li class="fw-bold fs-5">
+                  Sunset : <span id="sunset">00</span><span> PM</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="display-6 text-center mb-4">
+        Weather of other common Places!
+      </h2>
+
+      <div class="table-responsive">
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th style="width: auto"></th>
+              <th style="width: auto">Temperature</th>
+              <th style="width: auto">Feels Like</th>
+              <th style="width: auto">Humidity</th>
+              <th style="width: auto">Precipitation</th>
+              <th style="width: auto">Wind</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th scope="row" class="text-start">Mumbai</th>
+              <td><span id="m_temp">00</span><span> &#8451;</span></td>
+              <td><span id="m_feels">00</span><span> &#8451;</span></td>
+              <td><span id="m_humidity">00</span><span> &#37;</span></td>
+              <td><span id="m_pct">00</span><span> &#37;</span></td>
+              <td><span id="m_wind">00</span><span> km/h</span></td>
+            </tr>
+
+            <tr>
+              <th scope="row" class="text-start">Bengalore</th>
+              <td><span id="b_temp">00</span><span> &#8451;</span></td>
+              <td><span id="b_feels">00</span><span> &#8451;</span></td>
+              <td><span id="b_humidity">00</span><span> &#37;</span></td>
+              <td><span id="b_pct">00</span><span> &#37;</span></td>
+              <td><span id="b_wind">00</span><span> km/h</span></td>
+            </tr>
+
+            <tr>
+              <th scope="row" class="text-start">Chennai</th>
+              <td><span id="c_temp">00</span><span> &#8451;</span></td>
+              <td><span id="c_feels">00</span><span> &#8451;</span></td>
+              <td><span id="c_humidity">00</span><span> &#37;</span></td>
+              <td><span id="c_pct">00</span><span> &#37;</span></td>
+              <td><span id="c_wind">00</span><span> km/h</span></td>
+            </tr>
+
+            <tr>
+              <th scope="row" class="text-start">Hyderabad</th>
+              <td><span id="h_temp">00</span><span> &#8451;</span></td>
+              <td><span id="h_feels">00</span><span> &#8451;</span></td>
+              <td><span id="h_humidity">00</span><span> &#37;</span></td>
+              <td><span id="h_pct">00</span><span> &#37;</span></td>
+              <td><span id="h_wind">00</span><span> km/h</span></td>
+            </tr>
+
+            <tr>
+              <th scope="row" class="text-start">Kolkata</th>
+              <td><span id="k_temp">00</span><span> &#8451;</span></td>
+              <td><span id="k_feels">00</span><span> &#8451;</span></td>
+              <td><span id="k_humidity">00</span><span> &#37;</span></td>
+              <td><span id="k_pct">00</span><span> &#37;</span></td>
+              <td><span id="k_wind">00</span><span> km/h</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container mt-5 pt-5 mb-3">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-2 my-2 border-top">
+        <div class="d-flex align-items-center">
+          <a href="/" class="mb-3 mb-md-0 text-body-primary text-decoration-none  fs-4">WeatherHub</a>
+          <span class="text-body-indf fs-5 ms-5 ps-5 ms-5">Copyright © 2024 WeatherHub, Inc.</span>
+        </div>
+
+        <ul class="nav  justify-content-end list-unstyled d-flex">
+          <li class="ms-3 fs-3"><a class="text-body-primary" href="https://www.linkedin.com/in/vansh-chauhan-741a5b257/"><i class="fa-brands fa-linkedin"></i></a>
+          </li>
+          <li class="ms-3 fs-3"><a class="text-body-primary" href="https://github.com/VanshChauhan-1106"><i class="fa-brands fa-github"></i></a>
+          </li>
+          <li class="ms-3 fs-3"><a class="text-body-primary" href="https://www.instagram.com/vansh_.chauhan_/"><i class="fa-brands fa-instagram"></i></a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script> -->
+  <script src="app.js"></script>
+</body>
+
+</html>
