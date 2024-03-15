@@ -107,7 +107,7 @@
             <div class="card-body">
               <ul class="list-unstyled mt-3 mb-4">
                 <li class="fw-bold fs-5">
-                  Precipitation : <span id="cloud_pct">00</span><span> &#37;</span>
+                  Pressure : <span id="pressure">00</span><span> mb</span>
                 </li>
                 <li class="fw-bold fs-5">
                   Humidity : <span id="humidity">00</span><span> &#37;</span>
@@ -116,7 +116,7 @@
                   Wind Speed : <span id="wind_speed">00</span><span> km/h</span>
                 </li>
                 <li class="fw-bold fs-5">
-                  Wind Deg : <span id="wind_degrees">00</span><span> &#8451;</span>
+                  Wind Deg : <span id="wind_degrees">00</span><span>&deg;</span>
                 </li>
               </ul>
             </div>
@@ -156,7 +156,7 @@
               <th style="width: auto">Temperature</th>
               <th style="width: auto">Feels Like</th>
               <th style="width: auto">Humidity</th>
-              <th style="width: auto">Precipitation</th>
+              <th style="width: auto">Pressure</th>
               <th style="width: auto">Wind</th>
             </tr>
           </thead>
@@ -167,7 +167,7 @@
               <td><span id="m_temp">00</span><span> &#8451;</span></td>
               <td><span id="m_feels">00</span><span> &#8451;</span></td>
               <td><span id="m_humidity">00</span><span> &#37;</span></td>
-              <td><span id="m_pct">00</span><span> &#37;</span></td>
+              <td><span id="m_pressure">00</span><span> mb</span></td>
               <td><span id="m_wind">00</span><span> km/h</span></td>
             </tr>
 
@@ -176,7 +176,7 @@
               <td><span id="b_temp">00</span><span> &#8451;</span></td>
               <td><span id="b_feels">00</span><span> &#8451;</span></td>
               <td><span id="b_humidity">00</span><span> &#37;</span></td>
-              <td><span id="b_pct">00</span><span> &#37;</span></td>
+              <td><span id="b_pressure">00</span><span> mb</span></td>
               <td><span id="b_wind">00</span><span> km/h</span></td>
             </tr>
 
@@ -185,7 +185,7 @@
               <td><span id="c_temp">00</span><span> &#8451;</span></td>
               <td><span id="c_feels">00</span><span> &#8451;</span></td>
               <td><span id="c_humidity">00</span><span> &#37;</span></td>
-              <td><span id="c_pct">00</span><span> &#37;</span></td>
+              <td><span id="c_pressure">00</span><span> mb</span></td>
               <td><span id="c_wind">00</span><span> km/h</span></td>
             </tr>
 
@@ -194,7 +194,7 @@
               <td><span id="h_temp">00</span><span> &#8451;</span></td>
               <td><span id="h_feels">00</span><span> &#8451;</span></td>
               <td><span id="h_humidity">00</span><span> &#37;</span></td>
-              <td><span id="h_pct">00</span><span> &#37;</span></td>
+              <td><span id="h_pressure">00</span><span> mb</span></td>
               <td><span id="h_wind">00</span><span> km/h</span></td>
             </tr>
 
@@ -203,7 +203,7 @@
               <td><span id="k_temp">00</span><span> &#8451;</span></td>
               <td><span id="k_feels">00</span><span> &#8451;</span></td>
               <td><span id="k_humidity">00</span><span> &#37;</span></td>
-              <td><span id="k_pct">00</span><span> &#37;</span></td>
+              <td><span id="k_pressure">00</span><span> mb</span></td>
               <td><span id="k_wind">00</span><span> km/h</span></td>
             </tr>
           </tbody>
@@ -213,7 +213,7 @@
   </main>
 
   <footer>
-    <div class="container mt-5 pt-5 mb-3">
+    <div class="container mt-5 pt-5 mb-3 container-responsive">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-2 my-2 border-top">
         <div class="d-flex align-items-center">
           <a href="/" class="mb-3 mb-md-0 text-body-primary text-decoration-none  fs-4">WeathersHub</a>

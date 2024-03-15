@@ -1,37 +1,27 @@
-const url = "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=";
-const options = {
-  method: "GET",
-  headers: {
-    'X-RapidAPI-Key': '0f048fa590msh0d1eee29d7de413p1740cajsnfd0b846b0027',
-    'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
-  }
-};
+const apiUrl =
+  "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+const apiKey = "de7e7186fdf0edc83ecde54fb7d8666d";
 
 const getWeather = async (city) => {
-  try {
-    cityName.innerHTML = city;
-    const response = await fetch(url + city, options);
-    const result = await response.json();
-    cloud_pct.innerHTML = result.cloud_pct;
-    temp.innerHTML = result.temp;
-    feels_like.innerHTML = result.feels_like;
-    humidity.innerHTML = result.humidity;
-    min_temp.innerHTML = result.min_temp;
-    max_temp.innerHTML = result.max_temp;
-    wind_speed.innerHTML = (result.wind_speed * 3.6).toFixed(2);
-    wind_degrees.innerHTML = result.wind_degrees;
-    sunrise.innerHTML = toTime(result.sunrise);
-    sunset.innerHTML = toTime(result.sunset);
-    console.log(result);
-
-    if(result.temp == undefined) {
-      alert("Enter a valid city or location name!");
-      getWeather("Delhi");
-    }
-    
-  } catch (error) {
-    console.error(error);
+  const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+  const result = await response.json();
+  cityName.innerHTML = result.name;
+  if (!(result.cod == 200)) {
+    alert("Enter a valid city or location name!");
+    getWeather("Delhi");
   }
+
+  temp.innerHTML = Math.round(result.main.temp);
+  feels_like.innerHTML = Math.round(result.main.feels_like);
+  min_temp.innerHTML = Math.round(result.main.temp_min);
+  max_temp.innerHTML = Math.round(result.main.temp_max);
+  pressure.innerHTML = result.main.pressure;
+  humidity.innerHTML = Math.round(result.main.humidity);
+  wind_speed.innerHTML = Math.round((result.wind.speed * 3.6).toFixed(2));
+  wind_degrees.innerHTML = Math.round(result.wind.deg);
+  sunrise.innerHTML = toTime(result.sys.sunrise);
+  sunset.innerHTML = toTime(result.sys.sunset);
+  console.log(result);
 };
 
 getWeather("Delhi");
@@ -50,27 +40,22 @@ function toTime(unix) {
   return time;
 }
 
-
 const getWeather1 = async (city, name) => {
-  try {
-    const response = await fetch(url + city, options);
-    const result = await response.json();
-    // let id1 = name+"_pct";
-    let pct = name+"_pct";
-    let feels = name+"_feels";
-    let temp = name+"_temp";
-    let humidity = name+"_humidity";
-    let wind = name+"_wind";
+  const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+  const result = await response.json();
+  // let id1 = name+"_pct";
+  let pressure = name + "_pressure";
+  let feels = name + "_feels";
+  let temp = name + "_temp";
+  let humidity = name + "_humidity";
+  let wind = name + "_wind";
 
-    document.getElementById(pct).innerHTML = result.cloud_pct;
-    document.getElementById(feels).innerHTML = result.feels_like;
-    document.getElementById(temp).innerHTML = result.temp;
-    document.getElementById(humidity).innerHTML = result.humidity;
-    document.getElementById(wind).innerHTML = (result.wind_speed * 3.6).toFixed(2);
-    console.log(result);
-  } catch (error) {
-    console.error(error);
-  }
+  document.getElementById(pressure).innerHTML = Math.round(result.main.pressure);
+  document.getElementById(feels).innerHTML = Math.round(result.main.feels_like);
+  document.getElementById(temp).innerHTML = Math.round(result.main.temp);
+  document.getElementById(humidity).innerHTML = Math.round(result.main.humidity);
+  document.getElementById(wind).innerHTML = Math.round((result.wind.speed * 3.6).toFixed(2));
+  console.log(result);
 };
 
 getWeather1("Mumbai", "m");
@@ -78,4 +63,3 @@ getWeather1("Bangalore", "b");
 getWeather1("Chennai", "c");
 getWeather1("Hyderabad", "h");
 getWeather1("Kolkata", "k");
-
